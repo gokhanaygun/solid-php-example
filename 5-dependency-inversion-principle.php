@@ -2,16 +2,17 @@
 // Dependency Inversion Principle Violation
 class Mailer
 {
+    public function send()
+    {
 
+    }
 }
 
 class SendWelcomeMessage
 {
-    private $mailer;
-
     public function __construct(Mailer $mailer)
     {
-        $this->mailer = $mailer;
+        return $mailer->send();
     }
 }
 
@@ -39,10 +40,8 @@ class SendGridMailer implements Mailer
 
 class SendWelcomeMessage
 {
-    private $mailer;
-
     public function __construct(Mailer $mailer)
     {
-        $this->mailer = $mailer;
+        return $mailer->send();
     }
 }
